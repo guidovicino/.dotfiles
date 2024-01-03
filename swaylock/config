@@ -1,0 +1,83 @@
+# =========================
+# GV swaylock Configuration
+# =========================
+#
+# Author: Guido Vicino <mail@guidovicino.com>
+# Last update: 2023-01-02
+#
+
+# not validate empty password
+ignore-empty-password
+
+# show failed attempts inside indicator
+show-failed-attempts
+
+# show keyboard layout when typing
+show-keyboard-layout
+
+# show inside indicator
+indicator-caps-lock
+
+# background image
+image=~/Pictures/Sfondi/890291-relaxing-computer-backgrounds-1920x1080-4k.jpg
+scaling=fill
+
+# background color
+color=fbf1c7dd
+
+# font settings
+font=JetBrains Mono Nerd Font
+font-size=12
+
+# show always the circle indicator
+indicator-idle-visible
+
+# circle indicator thickness
+indicator-thickness=10
+
+# lines settings
+line-uses-inside
+line-uses-ring
+
+# layout colors
+layout-bg-color=fbf1c7dd
+layout-text-color=d65d0eff
+
+# indicator line color
+ring-color=fbf1c799
+line-color=fbf1c799
+text-color=d65d0eff
+
+# higlight colors
+key-hl-color=8ec07cdd
+bs-hl-color=cc241ddd
+
+# indicator inside color
+inside-color=fbf1c766
+
+# indicator clear color
+ring-clear-color=fbf1c7dd
+inside-clear-color=fbf1c766
+line-clear-color=fbf1c7dd
+text-clear-color=d65d0eff
+
+# indicator caps-lock warning color
+ring-caps-lock-color=fbf1c7dd
+inside-caps-lock-color=fbf1c766
+line-caps-lock-color=fbf1c7dd
+text-caps-lock-color=d65d0eff
+
+# indicator verifying status color
+ring-ver-color=fbf1c7dd
+inside-ver-color=fbf1c766
+line-ver-color=fbf1c7dd
+text-ver-color=d65d0eff
+
+# indicator wrong color status
+ring-wrong-color=fbf1c7dd
+inside-wrong-color=fbf1c766
+line-wrong-color=fbf1c7dd
+text-wrong-color=d65d0eff
+
+# separator color
+separator-color=fbf1c7dd
