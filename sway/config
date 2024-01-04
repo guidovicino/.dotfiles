@@ -29,7 +29,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu j4-dmenu-desktop --use-xdg-de --term 'alacritty' --dmenu "bemenu -i -l 10 --tb '#689d6add' --tf '#ffffff' --fb '#282828dd' --ff '#fe8019ff' --nb '#282828dd' --nf '#ffffff' --hb '#282828dd' --hf '#fe8019ff' --sb '#282828dd' --sf '#ffffff' --scb '#282828dd' --scf '#ffffff' --ab '#282828dd'" | xargs swaymsg exec -
+set $menu j4-dmenu-desktop --use-xdg-de --term 'alacritty' --dmenu "bemenu -i -l 10 -p '>' --tb '#282828dd' --tf '#ffffff' --fb '#282828dd' --ff '#d65d0eff' --nb '#282828dd' --nf '#ffffff' --hb '#282828dd' --hf '#d65d0eff' --sb '#282828dd' --sf '#ffffff' --scb '#282828dd' --scf '#ffffff' --ab '#282828dd'" | xargs swaymsg exec -
 
 # Import other possible variables
 include /etc/sway/config-vars.d/*
