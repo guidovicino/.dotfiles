@@ -1,17 +1,18 @@
-#G
+#
 # =======================
 # GV Swayvm Configuration
 # =======================
 #
 # Author: Guido Vicino <mail@guidovicino.com>
-# Last update: 2024-01-02
 #
 # Based on:
 #  - /etc/sway/config (debian sway 1.7.6)
 #
 # Read `man 5 sway` for a complete reference.
 
+#
 ### Variables
+#
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -28,16 +29,20 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu fuzzel | xargs swaymsg exec --
-#set $menu j4-dmenu-desktop --dmenu 'bemenu -i -l 10' --use-xdg-de --term 'alacritty' | xargs swaymsg exec -
-set $menu j4-dmenu-desktop --use-xdg-de --term 'alacritty' --dmenu "bemenu -i -l 10 --tb '#689d6add' --tf '#ffffff' --fb '#282828dd' --ff '#fe8019ff' --nb '#282828dd' --nf '#ffffff' --hb '#282828dd' --hf '#fe8019ff' --sb '#282828dd' --sf '#ffffff' --scb '#282828dd' --scf '#ffffff' --ab '#282828dd'"
+set $menu j4-dmenu-desktop --use-xdg-de --term 'alacritty' --dmenu "bemenu -i -l 10 --tb '#689d6add' --tf '#ffffff' --fb '#282828dd' --ff '#fe8019ff' --nb '#282828dd' --nf '#ffffff' --hb '#282828dd' --hf '#fe8019ff' --sb '#282828dd' --sf '#ffffff' --scb '#282828dd' --scf '#ffffff' --ab '#282828dd'" | xargs swaymsg exec -
+
+# Import other possible variables
 include /etc/sway/config-vars.d/*
 
-### Output configuration
+#
+### Appearance
+#
 
+# Import a base 16 color theme 
 include colorscheme
 
 # Basic color configuration using the Base16 variables for windows and borders.
+
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base05 $base0D $base00 $base0D $base0D
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
@@ -49,26 +54,23 @@ client.background       $base07
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/Pictures/Sfondi/890171-best-relaxing-computer-backgrounds-1920x1080-for-4k-monitor.jpg fill
 
-# Gaps
-gaps inner 10
-gaps outer 10
-smart_gaps off
-
-# Titlebars
-font "JetBrainsMono Nerd Font" 10
-default_border pixel 3
+# Gaps and Borders
+gaps inner 5
+gaps outer 5
+smart_gaps on
+default_border pixel 1
 default_floating_border normal
-hide_edge_borders none
-titlebar_border_thickness 0
 
-# Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+### Output Configuration
 #
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # laptop monitor (expected position: right)
+output eDP-1 scale 2
 output eDP-1 resolution 3840x2400 position 2560,0
+
 # external monitor (expected position: left)
 output DP-3  resolution 2560x1440 position 0,0
 
@@ -79,10 +81,10 @@ focus output DP-3
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
-### Idle configuration
-
-# Example configuration:
 #
+### Idle configuration
+#
+
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -92,16 +94,10 @@ exec swayidle -w \
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-### Input configuration
 #
+### Input Configuration
 #
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -115,12 +111,19 @@ input type:keyboard {
 input "1:1:AT_Translated_Set_2_keyboard" {
     # configure Caps-Lock as additional Ctrl 
     xkb_options caps:ctrl_modifier
-    #xkb_options caps:ctrl_modifier,altwin:swap_lalt_lwin
+    xkb_options caps:ctrl_modifier,altwin:swap_lalt_lwin
 }
 
 # Happy Hacking Keyboard Professional Hybrid Type S
 input "Identifier: 1278:33:PFU_Limited_HHKB-Hybrid" {
     # nothing to do for the moment
+}
+
+# IBM RT3200 Space Saver II
+input "1241:5120:HID_04d9:1400" {
+    # configure Caps-Lock as additional Ctrl 
+    xkb_options caps:ctrl_modifier
+    xkb_options caps:ctrl_modifier,altwin:swap_lalt_lwin
 }
 
 # Laptop Inbuilt Touchpad
@@ -137,7 +140,7 @@ input "1739:52710:DLL0945:00_06CB:CDE6_Touchpad" {
 }
 
 # Kensington Slimblade Pro
-input "1149:32982:Kensington_SlimBlade_Pro(2.4GHz_Receiver)_Kensington_SlimBlade_Pro_Trackball(2.4GHz_Receiver)" { 
+input "1149:32982:Kensington_SlimBlade_Pro(2.4GHz_Receiver)_Kensington_SlimBlade_Pro_Trackball(2.4GHz_Receiver)" {
     accel_profile adaptive
     natural_scroll disabled
     left_handed disabled
@@ -146,8 +149,10 @@ input "1149:32982:Kensington_SlimBlade_Pro(2.4GHz_Receiver)_Kensington_SlimBlade
     scroll_button 274
 }
 
+#
 ### Key bindings
 #
+
 # Basics:
 #
 # Start a terminal
@@ -170,7 +175,30 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec wlogout
+
+# Lock Screen
+bindsym $mod+Alt+l exec swaylock
+
+# Displays Selector
+bindsym $mod+Alt+Shift+p exec wdisplays
+
+#
+# Screenshot
+#
+# Screenshot and saves to XDG_PICTURES_DIR
+bindsym $mod+p       exec grimshot save active
+bindsym $mod+Shift+p exec grimshot save area
+bindsym $mod+Mod1+p  exec grimshot save output
+bindsym $mod+Ctrl+p  exec grimshot save window
+
+# Screenshot and copy to clipboard
+bindsym $mod+print          exec grimshot copy active
+bindsym $mod+Shift+print    exec grimshot copy area
+bindsym $mod+Mod1+print     exec grimshot copy output
+bindsym $mod+Ctrl+print     exec grimshot copy window
+
 #
 # Moving around:
 #
@@ -284,6 +312,37 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Multimedia and Screen Bindings
+
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+bindsym XF86AudioMute exec amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' > $WOBSOCK
+bindsym XF86AudioMicMute exec amixer set Capture toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec bemenu-run
+
+#
+# Windows Presets
+#
+
+# use 'swaymsg -t get_tree' to see apps ids
+
+# make dialog window floating
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+
+# floating apps
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="wdisplays"] floating enable
+for_window [app_id="org.gnome.Calculator"] floating enable
+
+# assigned apps
+# assign [class="firefox"] -> 3
+
 #
 # Status Bar:
 #
@@ -292,19 +351,41 @@ bar {
 }
 
 #
-# Executions:
+# Startup applications 
 #
 
-include /etc/sway/config.d/*
-
+# Importing Environment Variables and Linux D-Bus Activation
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+# Toggle/Untoggle Screen Fix on Reload
+exec_always ~/.local/bin/toggle_screen.sh
+
+# Mako - Notifications Management
 exec mako
-exec wl-paste -t text --watch clipman store
-#exec wl-paste -t text --watch clipman store --no-persist
+
+# Wob - Overlay Bar
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec_always rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+# Clipman - Clipboard History Management
+exec wl-paste -t text --watch clipman store --no-persist
+
+# Network Manager Applet
 exec nm-applet --indicator
+
+# Bluetooth Applet
 exec blueman-applet
-exec insync
+
+# Insync
+exec XDG_CURRENT_DESKTOP=gnome insync start
+
+# Solaar - Logitech Devices Management
 exec solaar -w hide
-exec protonmail-bridge
+
+# Protnmail Bridge - Disabled
+#exec protonmail-bridge
+
+# Include other configurations (eg. systemd user scripts)
+include /etc/sway/config.d/*
