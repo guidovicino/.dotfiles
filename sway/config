@@ -61,8 +61,8 @@ font pango:JetBrainsMono Nerd Font 10
 gaps inner 6
 gaps outer 6
 smart_gaps on
-default_border normal
-#default_border pixel 2
+#default_border normal
+default_border pixel 2
 default_floating_border normal
 hide_edge_borders smart
 
