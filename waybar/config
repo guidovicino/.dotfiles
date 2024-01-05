@@ -14,8 +14,6 @@
      "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
-         "active-only": false,
-         "format": "{name}: {icon}",
          "persistent_workspaces" : {
                 "1" : [],
                 "2" : [],
@@ -28,6 +26,7 @@
                 "9" : [],
                 "10" : []
           },
+         "format": "{name}: {icon}",
          "format-icons": {
             "1": "",
             "2": "",
@@ -39,7 +38,6 @@
             "urgent": "",
             "focused": "",
             "default": ""
-           }
  }
      },
     "keyboard-state": {
