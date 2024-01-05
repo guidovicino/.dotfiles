@@ -54,12 +54,17 @@ client.background       $base07
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/Pictures/Sfondi/890171-best-relaxing-computer-backgrounds-1920x1080-for-4k-monitor.jpg fill
 
+# Font (look with "pango-list")
+font pango:JetBrainsMono Nerd Font 10
+
 # Gaps and Borders
-gaps inner 5
-gaps outer 5
+gaps inner 6
+gaps outer 6
 smart_gaps on
-default_border pixel 1
+default_border normal
+#default_border pixel 2
 default_floating_border normal
+hide_edge_borders smart
 
 #
 ### Output Configuration

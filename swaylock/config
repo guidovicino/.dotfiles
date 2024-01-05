@@ -1,6 +1,6 @@
-# =========================
+# ++=======================
 # GV swaylock Configuration
-# =========================
+# =++======================
 #
 # Author: Guido Vicino <mail@guidovicino.com>
 # Last update: 2023-01-02
@@ -19,14 +19,14 @@ show-keyboard-layout
 indicator-caps-lock
 
 # background image
-image=~/Pictures/Sfondi/890291-relaxing-computer-backgrounds-1920x1080-4k.jpg
+image=~/Pictures/Sfondi/890171-best-relaxing-computer-backgrounds-1920x1080-for-4k-monitor.jpg
 scaling=fill
 
 # background color
 color=fbf1c7dd
 
 # font settings
-font=JetBrains Mono Nerd Font
+font=JetBrainsMono Nerd Font
 font-size=12
 
 # show always the circle indicator
@@ -81,3 +81,4 @@ text-wrong-color=d65d0eff
 
 # separator color
 separator-color=fbf1c7dd
+output * bg ~/Pictures/Sfondi/890171-best-relaxing-computer-backgrounds-1920x1080-for-4k-monitor.jpg fill
