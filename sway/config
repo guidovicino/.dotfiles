@@ -62,7 +62,7 @@ gaps inner 6
 gaps outer 6
 smart_gaps on
 #default_border normal
-default_border pixel 2
+default_border pixel 1
 default_floating_border normal
 hide_edge_borders smart
 
@@ -340,10 +340,22 @@ bindsym XF86Search exec bemenu-run
 for_window [window_type="dialog"] floating enable
 for_window [window_role="dialog"] floating enable
 
+#
 # floating apps
+#
+
+# Mixer Pulse Audio
 for_window [app_id="pavucontrol"] floating enable
+
+# Gestore Schermi
 for_window [app_id="wdisplays"] floating enable
+
+
+# Calcolatore
 for_window [app_id="org.gnome.Calculator"] floating enable
+
+# Outlook
+for_window [app_id="msedge-_faolnafnngnfdaknnbpnkhgohbobgegn-Default"] floating enable
 
 # assigned apps
 # assign [class="firefox"] -> 3
