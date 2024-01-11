@@ -131,12 +131,20 @@ input "1241:5120:HID_04d9:1400" {
     xkb_options caps:ctrl_modifier,altwin:swap_lalt_lwin
 }
 
+# Lenovo Trackpoint Keyboard II
+    input "6127:24814:Lenovo_TrackPoint_Keyboard_II" {
+    # configure Caps-Lock as additional Ctrl 
+    xkb_options caps:ctrl_modifier
+    xkb_options caps:ctrl_modifier,altwin:swap_lalt_lwin
+}
+
+
 # Laptop Inbuilt Touchpad
 input "1739:52710:DLL0945:00_06CB:CDE6_Touchpad" {
     tap enabled
     tap_button_map lrm
     accel_profile adaptive
-    natural_scroll enabled
+        natural_scroll enabled
     left_handed disabled
     click_method button_areas
     middle_emulation enabled
@@ -176,7 +184,7 @@ bindsym $mod+d exec $menu
 # mouse button for dragging.
 floating_modifier $mod normal
 
-# Reload the configuration file
+# 
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)

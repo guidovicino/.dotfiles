@@ -37,3 +37,12 @@ fi
 # Obsidian - Enable Wayland Support
 export OBSIDIAN_USE_WAYLAND=1
 . "$HOME/.cargo/env"
+
+# fix for sway java applications
+if [ "$XDG_SESSION_DESKTOP" = "sway" ] ; then
+    # https://github.com/swaywm/sway/issues/595
+    export _JAVA_AWT_WM_NONREPARENTING=1
+fi
+
+# configured this way to avoid to launch aws command with a wrong profile
+export AWS_DEFAULT_PROFILE=please_add_the_right_AWS_DEFAULT_PROFILE
