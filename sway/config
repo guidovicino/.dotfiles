@@ -265,6 +265,10 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# Focus window or tab if mouse is hovering over it
+focus_follows_mouse yes
+
 #
 # Workspaces:
 #
@@ -431,6 +435,9 @@ exec nm-applet --indicator
 
 # Bluetooth Applet
 exec blueman-applet
+
+# Easyeffects - Audio Effects Management
+exec easyeffects --gapplication-service
 
 # Insync
 exec XDG_CURRENT_DESKTOP=gnome insync start
