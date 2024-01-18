@@ -267,7 +267,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Focus window or tab if mouse is hovering over it
-focus_follows_mouse yes
+#focus_follows_mouse yes
 
 #
 # Workspaces:
