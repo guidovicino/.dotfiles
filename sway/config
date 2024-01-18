@@ -296,6 +296,14 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
+
+# Cycle between workspaces
+bindsym $mod+control+$right workspace next
+bindsym $mod+control+$left workspace prev
+
+bindsym $mod+control+Right workspace next
+bindsym $mod+control+Left workspace prev
+
 #
 # Layout stuff:
 #
@@ -378,8 +386,16 @@ bindsym XF86Search exec bemenu-run
 # use 'swaymsg -t get_tree' to see apps ids
 
 # make dialog window floating
-for_window [window_type="dialog"] floating enable
-for_window [window_role="dialog"] floating enable
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
 
 #
 # floating apps
@@ -391,12 +407,17 @@ for_window [app_id="pavucontrol"] floating enable
 # Gestore Schermi
 for_window [app_id="wdisplays"] floating enable
 
-
 # Calcolatore
 for_window [app_id="org.gnome.Calculator"] floating enable
 
 # Outlook
 for_window [app_id="msedge-_faolnafnngnfdaknnbpnkhgohbobgegn-Default"] floating enable
+
+# Firefox 
+for_window [title = "About Mozilla Firefox"] floating enable
+for_window [window_role = "About"] floating enable
+for_window [app_id="firefox" title="Library"] floating enable, border pixel
+
 
 # assigned apps
 # assign [class="firefox"] -> 3
@@ -412,10 +433,27 @@ bar {
 # Startup applications 
 #
 
+# Configure xresources
+exec_always test -f ~/.Xresources && xrdb -merge ~/.Xresources
+
 # Importing Environment Variables and Linux D-Bus Activation
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment 2>/dev/null && \
 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+ # Start Gnomes xsettings daemon
+# TODO: Start alt daemon if Gnomes isn't installed
+exec /usr/libexec/gsd-xsettings
+
+# Support to gnome-keyring
+#
+# Add also to /etc/pam.d/login
+#     auth      optional  pam_gnome_keyring.so
+#     password  optional  pam_gnome_keyring.so
+#     session   optional  pam_gnome_keyring.so auto_start
+
+exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+exec export $(gnome-keyring-daemon
 
 # Toggle/Untoggle Screen Fix on Reload
 exec_always ~/.local/bin/toggle_screen.sh
