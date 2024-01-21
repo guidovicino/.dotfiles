@@ -1,0 +1,15 @@
+font=JetBrains Mono 14px
+background-color=#282828dd
+#border-color=#282a36
+border-color=#458588dd
+border-radius=5
+border-size=0
+format=<span weight="bold" rise="10000">%s</span>\n%b
+max-icon-size=50
+padding=15
+margin=50
+text-color=#ffffffdd
+#text-color=#d65d0edd
+width=400
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+default-timeout=5000
