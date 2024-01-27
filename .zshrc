@@ -112,3 +112,11 @@ export VIRTUALENV="$HOME/.venv"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Private Environment Variables
+if [ -f ~/.zshsecrets
+  source ~/.zshsecrets
+fi
+
+# Haskell GHCup installer
+[ -f "/home/guido/.ghcup/env" ] && source "/home/guido/.ghcup/env" # ghcup-env
