@@ -112,6 +112,7 @@ export VIRTUALENV="$HOME/.venv"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ip="ip -c"
 
 # Private Environment Variables
 [ -f "$HOME/.zshsecrets" ] && source "$HOME/.zshsecrets" 
